@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package currencyExchangerService;
+
+option go_package = "github.com/ditoskas/currency-exchanger-service/proto";
+
+message ConvertRequest {
+  double amount = 1;
+  string fromCurrency = 2;
+  string toCurrency = 3;
+}
+
+message ConvertResponse {
+  double amountTo = 1;
+  string toCurrency = 2;
+  double amountOriginal = 3;
+  string fromCurrency = 4;
+}
+
+service ConvertService {
+  rpc Convert(ConvertRequest) returns (ConvertResponse);
+}
